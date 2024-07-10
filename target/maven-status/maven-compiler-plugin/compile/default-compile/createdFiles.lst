@@ -1,0 +1,12 @@
+org/godbehere/recipes/api/service/RecipeService.class
+org/godbehere/recipes/api/model/request/IngredientRq$IngredientRqBuilder.class
+org/godbehere/recipes/api/ApiApplication.class
+org/godbehere/recipes/api/model/request/IngredientRq.class
+org/godbehere/recipes/api/model/request/RecipeRequest$RecipeRequestBuilder.class
+org/godbehere/recipes/api/service/IngredientService.class
+org/godbehere/recipes/api/repository/RecipeRepository.class
+org/godbehere/recipes/api/controller/RecipeController.class
+org/godbehere/recipes/api/model/request/RecipeRequest.class
+org/godbehere/recipes/api/model/Ingredient.class
+org/godbehere/recipes/api/repository/IngredientRepository.class
+org/godbehere/recipes/api/model/Recipe.class
