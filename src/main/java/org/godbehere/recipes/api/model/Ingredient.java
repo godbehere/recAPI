@@ -1,17 +1,10 @@
 package org.godbehere.recipes.api.model;
 
-import org.godbehere.recipes.api.model.request.IngredientRq;
-
-import com.fasterxml.jackson.annotation.JsonBackReference;
-
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -31,11 +24,6 @@ public class Ingredient {
     @Column(name = "INGREDIENT_ID")
     private Integer ingredientId;
 
-    @JsonBackReference
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "RECIPE_ID")
-    private Recipe recipe;
-
     @Column(name = "LABEL")
     private String label;
 
@@ -52,13 +40,10 @@ public class Ingredient {
     private Boolean vegan;
 
     @Column(name = "UNITS")
-    private String units;
+    private Unit units;
 
     @Column(name = "CALORIES")
-    private Integer calories;
-
-    @Column(name = "AMOUNT")
-    private Double amount;
+    private Double calories;
 
     @Column(name = "PROTEIN")
     private Double protein;
@@ -69,21 +54,20 @@ public class Ingredient {
     @Column(name = "FAT")
     private Double fat;
 
-    public Ingredient(String label) {
-        this.label = label;
-    }
+    // public Ingredient(String label) {
+    //     this.label = label;
+    // }
 
-    public Ingredient(IngredientRq ingredient) {
-        this.label = ingredient.getLabel();
-        this.dairyFree = ingredient.getDairyFree();
-        this.glutenFree = ingredient.getGlutenFree();
-        this.vegetarian = ingredient.getVegetarian();
-        this.vegan = ingredient.getVegan();
-        this.units = ingredient.getUnits();
-        this.calories = ingredient.getCalories();
-        this.amount = ingredient.getAmount();
-        this.protein = ingredient.getProtein();
-        this.carbs = ingredient.getCarbs();
-        this.fat = ingredient.getFat();
-    }
+    // public Ingredient(IngredientRq ingredient) {
+    //     this.label = ingredient.getLabel();
+    //     this.dairyFree = ingredient.getDairyFree();
+    //     this.glutenFree = ingredient.getGlutenFree();
+    //     this.vegetarian = ingredient.getVegetarian();
+    //     this.vegan = ingredient.getVegan();
+    //     this.units = ingredient.getUnits();
+    //     this.calories = ingredient.getCalories() / ingredient.getAmount();
+    //     this.protein = ingredient.getProtein() / ingredient.getAmount();
+    //     this.carbs = ingredient.getCarbs() / ingredient.getAmount();
+    //     this.fat = ingredient.getFat() / ingredient.getAmount();
+    // }
 }

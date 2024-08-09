@@ -3,8 +3,8 @@ package org.godbehere.recipes.api.controller;
 import java.net.http.HttpResponse;
 import java.util.List;
 
-import org.godbehere.recipes.api.model.Ingredient;
 import org.godbehere.recipes.api.model.Recipe;
+import org.godbehere.recipes.api.model.RecipeIngredient;
 import org.godbehere.recipes.api.model.request.RecipeRequest;
 import org.godbehere.recipes.api.service.IngredientService;
 import org.godbehere.recipes.api.service.RecipeService;
@@ -31,17 +31,36 @@ public class RecipeController {
     public Recipe getRecipe(@RequestParam Integer recipeId) {
         return recipeService.getRecipe(recipeId);
     }
-    
 
+    @GetMapping("recipes")
+    public Iterable<Recipe> getAllRecipe() {
+        return recipeService.getAllRecipes();
+    }
+    
     @GetMapping("ingredients")
-    public List<Ingredient> getIngredients(@RequestParam Integer recipeId) {
-        List<Ingredient> ingredients = recipeService.getRecipeIngredients(recipeId);
+    public List<RecipeIngredient> getIngredients(@RequestParam Integer recipeId) {
+        List<RecipeIngredient> ingredients = recipeService.getRecipeIngredients(recipeId);
         return ingredients;
     }
 
     @GetMapping("calories")
     public Double getCalories(@RequestParam Integer recipeId) {
         return recipeService.getTotalCalories(recipeId);
+    }
+
+    @GetMapping("protein")
+    public Double getProtein(@RequestParam Integer recipeId) {
+        return recipeService.getTotalProtein(recipeId);
+    }
+
+    @GetMapping("carbs")
+    public Double getCarbs(@RequestParam Integer recipeId) {
+        return recipeService.getTotalCarbs(recipeId);
+    }
+
+    @GetMapping("fat")
+    public Double getFat(@RequestParam Integer recipeId) {
+        return recipeService.getTotalFat(recipeId);
     }
 
     @PostMapping("recipe")
