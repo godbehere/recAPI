@@ -8,6 +8,7 @@ import org.godbehere.recipes.api.model.RecipeIngredient;
 import org.godbehere.recipes.api.model.request.RecipeRequest;
 import org.godbehere.recipes.api.service.IngredientService;
 import org.godbehere.recipes.api.service.RecipeService;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -32,6 +33,7 @@ public class RecipeController {
         return recipeService.getRecipe(recipeId);
     }
 
+    @CrossOrigin(origins = "*")
     @GetMapping("recipes")
     public Iterable<Recipe> getAllRecipe() {
         return recipeService.getAllRecipes();

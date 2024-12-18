@@ -2,6 +2,8 @@
 /home/grant/Documents/Recipes/api/src/main/java/org/godbehere/recipes/api/controller/RecipeController.java
 /home/grant/Documents/Recipes/api/src/main/java/org/godbehere/recipes/api/model/Ingredient.java
 /home/grant/Documents/Recipes/api/src/main/java/org/godbehere/recipes/api/model/Recipe.java
+/home/grant/Documents/Recipes/api/src/main/java/org/godbehere/recipes/api/model/RecipeIngredient.java
+/home/grant/Documents/Recipes/api/src/main/java/org/godbehere/recipes/api/model/Unit.java
 /home/grant/Documents/Recipes/api/src/main/java/org/godbehere/recipes/api/model/request/IngredientRq.java
 /home/grant/Documents/Recipes/api/src/main/java/org/godbehere/recipes/api/model/request/RecipeRequest.java
 /home/grant/Documents/Recipes/api/src/main/java/org/godbehere/recipes/api/repository/IngredientRepository.java
