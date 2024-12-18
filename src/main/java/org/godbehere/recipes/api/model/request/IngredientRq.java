@@ -1,5 +1,7 @@
 package org.godbehere.recipes.api.model.request;
 
+import org.godbehere.recipes.api.model.Unit;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -16,8 +18,8 @@ public class IngredientRq {
     private Boolean dairyFree;
     private Boolean vegetarian;
     private Boolean vegan;
-    private String units;
-    private Integer calories;
+    private Unit units;
+    private Double calories;
     private Double amount;
     private Double protein;
     private Double carbs;

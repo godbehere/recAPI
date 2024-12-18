@@ -13,5 +13,6 @@ public enum Unit {
     GALLON,
     GRAM,
     KG,
-    OZ
+    OZ,
+    PINCH
 }

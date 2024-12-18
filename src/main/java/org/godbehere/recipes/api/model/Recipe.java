@@ -38,6 +38,9 @@ public class Recipe {
             columnDefinition = "TEXT")
     private String instructions;
 
+    @Column(name = "CALORIES")
+    private Double calories;
+
     @Column(name = "SERVINGS")
     private Integer servings;
 
@@ -48,10 +51,11 @@ public class Recipe {
     private String source;
 
     @OneToMany(cascade=CascadeType.ALL, mappedBy="recipe")
-    private List<Ingredient> ingredients;
+    private List<RecipeIngredient> ingredients;
 
     public Recipe() {
-        this.ingredients = new ArrayList<Ingredient>();
+        this.calories = 0.0;
+        this.ingredients = new ArrayList<RecipeIngredient>();
     }
 
     public Recipe(String label) {
@@ -59,7 +63,7 @@ public class Recipe {
         this.label = label;
     }
 
-    public void addIngredient(Ingredient ingredient) {
+    public void addIngredient(RecipeIngredient ingredient) {
         ingredient.setRecipe(this);
         this.ingredients.add(ingredient);
     }
