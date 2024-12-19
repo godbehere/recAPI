@@ -34,9 +34,8 @@ public class Recipe {
             columnDefinition = "TEXT")
     private String description;
 
-    @Column(name = "INSTRUCTIONS",
-            columnDefinition = "TEXT")
-    private String instructions;
+    @OneToMany(cascade=CascadeType.ALL)
+    private List<Step> instructions;
 
     @Column(name = "CALORIES")
     private Double calories;
@@ -50,12 +49,29 @@ public class Recipe {
     @Column(name = "SOURCE")
     private String source;
 
+    @Column(name = "GLUTEN_FREE")
+    private Boolean glutenFree;
+
+    @Column(name = "DAIRY_FREE")
+    private Boolean dairyFree;
+
+    @Column(name = "VEGETARIAN")
+    private Boolean vegetarian;
+
+    @Column(name = "VEGAN")
+    private Boolean vegan;
+
     @OneToMany(cascade=CascadeType.ALL, mappedBy="recipe")
     private List<RecipeIngredient> ingredients;
 
     public Recipe() {
         this.calories = 0.0;
+        this.instructions = new ArrayList<Step>();
         this.ingredients = new ArrayList<RecipeIngredient>();
+        this.dairyFree = true;
+        this.glutenFree = true;
+        this.vegetarian = true;
+        this.vegan = true;
     }
 
     public Recipe(String label) {
@@ -66,6 +82,10 @@ public class Recipe {
     public void addIngredient(RecipeIngredient ingredient) {
         ingredient.setRecipe(this);
         this.ingredients.add(ingredient);
+    }
+
+    public void addStep(Step step) {
+        this.instructions.add(step);
     }
     
 }
