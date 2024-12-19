@@ -15,7 +15,7 @@ public class RecipeRequest {
     
     private String label;
     private String description;
-    private String instructions;
+    private List<String> instructions;
     private Integer servings;
     private String time;
     private String source;

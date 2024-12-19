@@ -28,6 +28,7 @@ public class RecipeController {
         // this.ingredientService = ingredientService;
     }
 
+    @CrossOrigin(origins = "*")
     @GetMapping("recipe")
     public Recipe getRecipe(@RequestParam Integer recipeId) {
         return recipeService.getRecipe(recipeId);

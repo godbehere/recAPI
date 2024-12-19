@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.godbehere.recipes.api.model.Ingredient;
 import org.godbehere.recipes.api.model.Recipe;
 import org.godbehere.recipes.api.model.RecipeIngredient;
+import org.godbehere.recipes.api.model.Step;
 import org.godbehere.recipes.api.model.request.RecipeRequest;
 import org.godbehere.recipes.api.repository.RecipeRepository;
 import org.springframework.stereotype.Service;
@@ -40,6 +41,18 @@ public class RecipeService {
             } else {
                 newIngredient = optIngredient.get();
             }
+            if(!newIngredient.getDairyFree()) {
+                newRecipe.setDairyFree(false);
+            }
+            if(!newIngredient.getGlutenFree()) {
+                newRecipe.setGlutenFree(false);
+            }
+            if(!newIngredient.getVegetarian()) {
+                newRecipe.setVegetarian(false);
+            }
+            if(!newIngredient.getVegan()) {
+                newRecipe.setVegan(false);
+            }
             recipeIngredient.setAmount(ingredient.getAmount());
             recipeIngredient.setIngredient(newIngredient);
             recipeIngredient.setUnits(ingredient.getUnits());
@@ -47,7 +60,14 @@ public class RecipeService {
             newRecipe.addIngredient(recipeIngredient);
         });
         newRecipe.setDescription(recipe.getDescription());
-        newRecipe.setInstructions(recipe.getInstructions());
+        for(int i = 0; i < recipe.getInstructions().size(); i++) {
+            String step = recipe.getInstructions().get(i);
+            Step newStep = new Step();
+            newStep.setStepNumber(i + 1);
+            newStep.setStep(step);
+            newRecipe.addStep(newStep);
+        }
+        // newRecipe.setInstructions(recipe.getInstructions());
         newRecipe.setServings(recipe.getServings());
         newRecipe.setTime(recipe.getTime());
         newRecipe.setSource(recipe.getSource());
